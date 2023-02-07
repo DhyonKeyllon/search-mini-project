@@ -7,8 +7,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest",
-    "prepare": "husky install",
-    "commit": "cz"
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -34,6 +33,7 @@
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
     "jest-transform-stub": "^2.0.0",
+    "lint-staged": "^13.1.1",
     "vite": "^4.0.0"
   },
   "config": {
