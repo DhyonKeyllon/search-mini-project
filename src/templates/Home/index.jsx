@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 
-import { PostsComponent } from "../../components/Posts";
 import { handleLoadPosts } from "../../utils/load-posts";
 
 import { ButtonComponent } from "../../components/Button";
 import { InputComponent } from "../../components/Input";
+import { PostsComponent } from "../../components/Posts";
+
 import "./styles.css";
 
 export function Home() {
   const [posts, setPosts] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
-  const [postsPerPage, setPostsPerPage] = useState(2);
+  const [postsPerPage, setPostsPerPage] = useState(3);
   const [page, setPage] = useState(0);
   const [searchValue, setSearchValue] = useState("");
 
