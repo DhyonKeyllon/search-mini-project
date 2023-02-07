@@ -26,10 +26,6 @@ export function Home() {
     handleFetchPosts();
   }, []);
 
-  useEffect(() => {
-    searchValue === "" && handleFetchPosts();
-  }, [searchValue]);
-
   const handleFetchPosts = async () => {
     const postsAndPhotos = await handleLoadPosts();
     setPosts(postsAndPhotos.slice(page, postsPerPage));
