@@ -8,10 +8,10 @@ import { PostsComponent } from "../../components/Posts";
 
 import "./styles.css";
 
-export function Home() {
+export const Home = () => {
   const [posts, setPosts] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
-  const [postsPerPage, setPostsPerPage] = useState(3);
+  const [postsPerPage] = useState(3);
   const [page, setPage] = useState(0);
   const [searchValue, setSearchValue] = useState("");
 
@@ -24,6 +24,7 @@ export function Home() {
 
   useEffect(() => {
     handleFetchPosts();
+    console.log("fetch posts");
   }, []);
 
   const handleFetchPosts = async () => {
@@ -72,4 +73,4 @@ export function Home() {
       )}
     </section>
   );
-}
+};
