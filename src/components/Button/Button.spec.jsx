@@ -37,4 +37,12 @@ describe("<ButtonComponent />", () => {
 
     expect(button).toBeEnabled();
   });
+
+  it("should match snapshot", () => {
+    const fn = jest.fn();
+    const { container } = render(
+      <ButtonComponent text="Load more posts" disabled={false} onClick={fn} />
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
