@@ -38,6 +38,14 @@ describe("<PostsComponent />", () => {
     );
   });
 
+  it("should not render posts", () => {
+    render(<PostsComponent />);
+
+    expect(
+      screen.queryByRole("heading", { name: /title/i })
+    ).not.toBeInTheDocument();
+  });
+
   it("should match snapshot", () => {
     const { container } = render(<PostsComponent {...props} />);
 
