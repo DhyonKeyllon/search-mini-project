@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react";
+import React from 'react';
+import { useEffect, useState } from 'react';
 
-import { handleLoadPosts } from "../../utils/load-posts";
+import { handleLoadPosts } from '../../utils/load-posts';
 
-import { ButtonComponent } from "../../components/Button";
-import { InputComponent } from "../../components/Input";
-import { PostsComponent } from "../../components/Posts";
+import { ButtonComponent } from '../../components/Button';
+import { InputComponent } from '../../components/Input';
+import { PostsComponent } from '../../components/Posts';
 
-import "./styles.css";
+import './styles.css';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
   const [postsPerPage] = useState(3);
   const [page, setPage] = useState(0);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   const noMorePosts = page + postsPerPage >= allPosts.length;
-  const filteredPosts = !!searchValue
+  const filteredPosts = searchValue
     ? allPosts.filter((post) => {
         return post.title.toLowerCase().includes(searchValue.toLowerCase());
       })
@@ -24,7 +25,7 @@ export const Home = () => {
 
   useEffect(() => {
     handleFetchPosts();
-    console.log("fetch posts");
+    console.log('fetch posts');
   }, []);
 
   const handleFetchPosts = async () => {
@@ -55,7 +56,7 @@ export const Home = () => {
         <InputComponent
           searchValue={searchValue}
           handleChangeValue={handleChangeValue}
-          placeholder={"Type your search"}
+          placeholder={'Type your search'}
         />
       </div>
       {filteredPosts.length === 0 && (

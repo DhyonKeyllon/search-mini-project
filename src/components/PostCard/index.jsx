@@ -1,6 +1,10 @@
-import "./styles.css";
+import prop from 'prop-types';
 
-export const PostCardComponent = ({ title, cover, body, id }) => {
+import React from 'react';
+
+import './styles.css';
+
+export const PostCardComponent = ({ title, cover, body }) => {
   return (
     <div className="post">
       <img src={cover} alt={title} />
@@ -10,4 +14,10 @@ export const PostCardComponent = ({ title, cover, body, id }) => {
       </div>
     </div>
   );
+};
+
+PostCardComponent.propTypes = {
+  title: prop.string.isRequired,
+  body: prop.string.isRequired,
+  cover: prop.string.isRequired,
 };

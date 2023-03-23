@@ -1,9 +1,9 @@
 export const handleLoadPosts = async () => {
   const postsResponse = await fetch(
-    "https://jsonplaceholder.typicode.com/posts"
+    'https://jsonplaceholder.typicode.com/posts',
   );
   const photosResponse = await fetch(
-    "https://jsonplaceholder.typicode.com/photos"
+    'https://jsonplaceholder.typicode.com/photos',
   );
 
   const [posts, photos] = await Promise.all([

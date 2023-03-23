@@ -1,6 +1,9 @@
-import { PostCardComponent } from "../PostCard";
+import React from 'react';
+import prop from 'prop-types';
 
-import "./styles.css";
+import { PostCardComponent } from '../PostCard';
+
+import './styles.css';
 
 export const PostsComponent = ({ posts = [] }) => {
   return (
@@ -10,10 +13,23 @@ export const PostsComponent = ({ posts = [] }) => {
           key={post.id}
           title={post.title}
           body={post.body}
-          id={post.id}
           cover={post.cover}
         />
       ))}
     </div>
   );
+};
+
+PostsComponent.defaultProps = {
+  posts: [],
+};
+
+PostsComponent.propTypes = {
+  posts: prop.arrayOf(
+    prop.shape({
+      title: prop.string.isRequired,
+      body: prop.string.isRequired,
+      cover: prop.string.isRequired,
+    }),
+  ),
 };

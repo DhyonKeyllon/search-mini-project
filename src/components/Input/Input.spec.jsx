@@ -1,10 +1,12 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import React from 'react';
+import userEvent from '@testing-library/user-event';
 
-import { InputComponent } from ".";
+import { render, screen } from '@testing-library/react';
 
-describe("<InputComponent />", () => {
-  it("should have value of searchValue", () => {
+import { InputComponent } from '.';
+
+describe('<InputComponent />', () => {
+  it('should have value of searchValue', async () => {
     const fn = jest.fn();
 
     render(
@@ -12,38 +14,46 @@ describe("<InputComponent />", () => {
         handleChangeValue={fn}
         searchValue="Testing"
         placeholder="type your search"
-      />
+      />,
     );
 
     const input = screen.getByPlaceholderText(/type your search/i);
 
     expect(input).toBeInTheDocument();
-    expect(input.value).toBe("Testing");
+
+    await userEvent.type(input, 'Testing');
+
+    expect(input.value).toBe('Testing');
   });
 
-  it("should call handleChange function on each key pressed", async () => {
+  it('should call handleChange function on each key pressed', async () => {
     const fn = jest.fn();
+    const valueTyped = 'the value';
     render(
-      <InputComponent handleChangeValue={fn} placeholder="type your search" />
+      <InputComponent
+        handleChangeValue={fn}
+        placeholder="type your search"
+        searchValue={valueTyped}
+      />,
     );
 
     const input = screen.getByPlaceholderText(/type your search/i);
-    const valueTyped = "the value";
 
     await userEvent.type(input, valueTyped);
 
     expect(input.value).toBe(valueTyped);
+
     expect(fn).toHaveBeenCalledTimes(valueTyped.length);
   });
 
-  it("should match snapshot", () => {
+  it('should match snapshot', () => {
     const fn = jest.fn();
     const { container } = render(
       <InputComponent
         handleChangeValue={fn}
         searchValue="Testing"
         placeholder="type your search"
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });
