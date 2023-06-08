@@ -1,7 +1,5 @@
 import prop from 'prop-types';
 
-import React from 'react';
-
 import './styles.css';
 
 export const PostCardComponent = ({ title, cover, body }) => {

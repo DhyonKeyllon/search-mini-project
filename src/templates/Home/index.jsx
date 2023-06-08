@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
 
 import { handleLoadPosts } from '../../utils/load-posts';
@@ -25,7 +24,6 @@ export const Home = () => {
 
   useEffect(() => {
     handleFetchPosts();
-    console.log('fetch posts');
   }, []);
 
   const handleFetchPosts = async () => {
@@ -59,10 +57,12 @@ export const Home = () => {
           placeholder={'Type your search'}
         />
       </div>
-      {filteredPosts.length === 0 && (
+      {filteredPosts.length === 0 ? (
         <p>Não existem posts com o valor pesquisado</p>
+      ) : (
+        <PostsComponent posts={filteredPosts} />
       )}
-      <PostsComponent posts={filteredPosts} />
+
       {!searchValue && (
         <div className="button-container">
           <ButtonComponent

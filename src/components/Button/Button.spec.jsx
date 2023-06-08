@@ -1,4 +1,3 @@
-import React from 'react';
 const { render, screen, fireEvent } = require('@testing-library/react');
 
 import { ButtonComponent } from '.';

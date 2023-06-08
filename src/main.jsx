@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { Home } from './templates/Home';
@@ -6,7 +6,7 @@ import { Home } from './templates/Home';
 import './styles/global.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <StrictMode>
     <Home />
-  </React.StrictMode>,
+  </StrictMode>,
 );
